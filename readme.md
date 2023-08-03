@@ -10,3 +10,4 @@ In the worst case <2% of pixels is clipped:
 
 I therefore readjusted all parameters to respect the constraints $64 \leq \mu \leq 192$ and $0 < \sigma \leq 30$ and rerun the experiments.
 
+You can play around with [this](https://www.desmos.com/calculator/ni6mms7ztn) to verify how the distributions are.
