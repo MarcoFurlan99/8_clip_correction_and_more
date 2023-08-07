@@ -34,6 +34,26 @@ It is to be noted that these parameters are relatively much easier than previous
 
 [^1]: with abuse of notation on $\sigma_1$ and $\sigma_2$.
 
+The usual graphs, before BN adaptation:
+
 <img src="https://github.com/MarcoFurlan99/8_clip_correction_and_more/blob/master/1_800/graph_2d.png?raw=true">
 
+After BN adaptation:
+
 <img src="https://github.com/MarcoFurlan99/8_clip_correction_and_more/blob/master/1_800/graph_2d_adapted.png?raw=true">
+
+Results without clipping are homogeneous, as S. expected !
+
+New graphs: these are the same values but I graph them wrt $\mu_1, \mu_2$ externally and $\sigma_1, \sigma_2$.
+
+before BN adaptation:
+
+<img src="https://github.com/MarcoFurlan99/8_clip_correction_and_more/blob/master/1_800/graph_2d_sigma.png?raw=true">
+
+After BN adaptation:
+
+<img src="https://github.com/MarcoFurlan99/8_clip_correction_and_more/blob/master/1_800/graph_2d_adapted_sigma.png?raw=true">
+
+The difference graphs are in the folder [1_800](https://github.com/MarcoFurlan99/8_clip_correction_and_more/blob/master/1_800/).
+
+
