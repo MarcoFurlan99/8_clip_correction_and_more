@@ -30,7 +30,9 @@ This totals to 32 possible combinations of $(\mu_1, \mu_2)$ and 25 possible comb
 
 The source dataset is chosen to have parameters $(96, 18, 138, 18)$.
 
-It is to be noted that these parameters are relatively much easier than previous experiments ($\min\limits_{\mu_1, \mu_2} (\mu_2 - \mu_1) = 24$, $\max\limits_{\sigma \in \lbrace \sigma_1, \sigma_2 \rbrace} \sigma = 30$).
+It is to be noted that these parameters are relatively much easier than previous experiments ($\min\limits_{\mu_1, \mu_2} (\mu_2 - \mu_1) = 24$, $\max\limits_{\sigma \in \lbrace \sigma_1, \sigma_2 \rbrace} \sigma = 30$) [^1].
+
+[^1]: written poorly formally but whatever you get the point.
 
 <img src="https://github.com/MarcoFurlan99/8_clip_correction_and_more/blob/master/1_800/graph_2d.png?raw=true">
 
