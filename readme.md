@@ -18,13 +18,13 @@ You can play around with [this](https://www.desmos.com/calculator/ni6mms7ztn) to
 
 Since the code is already done and working, I went for a huge experiment with one source dataset and 800 target dataset. The source dataset has parameters $(96, 18, 138, 18)$, which put it at the center of the target datasets essentially. The target datasets have the following parameters:
 
-- $\mu_1 \in \{64,80,96,112,128,144,160\}$
+- $\mu_1 \in \lbrace 64,80,96,112,128,144,160 \rbrace$
 
-- $\mu_2 \in \{ \mu_1 + d | d \in \{24,32,42,55,73,97,128\} \land \mu_1+d \leq 192\}$
+- $\mu_2 \in \lbrace \mu_1 + d | d \in \lbrace 24,32,42,55,73,97,128\rbrace \land \mu_1+d \leq 192 \rbrace$
 
-- $\sigma_1 \in \{6,12,18,24,30\}$
+- $\sigma_1 \in \lbrace 6,12,18,24,30\rbrace$
 
-- $\sigma_2 \in \{6,12,18,24,30\}$
+- $\sigma_2 \in \lbrace6,12,18,24,30\rbrace$
 
 This totals to 32 possible combinations of $(\mu_1, \mu_2)$ and 25 possible combinations of $(\sigma_1, \sigma_2)$, totalling 32x25 = 800 target datasets. All parameter combinations respect the constraints above.
 
