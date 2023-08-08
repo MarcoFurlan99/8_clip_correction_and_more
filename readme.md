@@ -46,7 +46,7 @@ After BN adaptation:
 
 Results without clipping are homogeneous, as S. expected !
 
-New graphs: these are the same values but I graph them wrt $\mu_1, \mu_2$ externally and $\sigma_1, \sigma_2$.
+New graphs: these are the same values but I graph them wrt $\mu_1, \mu_2$ externally and $\sigma_1, \sigma_2$ internally.
 
 before BN adaptation:
 
