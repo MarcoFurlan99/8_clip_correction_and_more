@@ -16,7 +16,9 @@ You can play around with [this](https://www.desmos.com/calculator/ni6mms7ztn) to
 
 # The 1-800 experiment
 
-Since the code is already done and working, I went for a huge experiment with one source dataset and 800 target dataset. The target datasets have the following parameters:
+Since the code is already done and working, I went for a huge experiment with one source dataset and 800 target dataset. The objective of this is closing the experimentation with the four parameters $(\mu_1, \sigma_1, \mu_2, \sigma_2)$ with a single, complete experiment which encapsulates all possible cases.
+
+The target datasets have the following parameters:
 
 - $\mu_1 \in \lbrace 64,80,96,112,128,144,160 \rbrace$
 
