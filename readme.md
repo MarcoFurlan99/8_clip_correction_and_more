@@ -86,7 +86,7 @@ Raw Wasserstein:
 
 Target adapted Wasserstein (as in Luc's experiment in [your paper](https://publis.icube.unistra.fr/docs/17711/ISBI_paper_559.pdf)).
 
-<img src="https://github.com/MarcoFurlan99/8_clip_correction_and_more/blob/master/1_800/Prometheus_0.png?raw=true">
+<img src="https://github.com/MarcoFurlan99/8_clip_correction_and_more/blob/master/1_800/Prometheus_TA_0.png?raw=true">
 
 ## Observations
 
