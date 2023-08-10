@@ -90,13 +90,34 @@ Target adapted Wasserstein (as in Luc's experiment in [your paper](https://publi
 
 ## Observations
 
-- ans to [previous reunion](https://github.com/MarcoFurlan99/7_Wasserstein_computation_and_more) extra: bc parameters $\mu$ and $\Var$ can be very different but ending results can be really good, as seen in the example with different brightnesses. The point of taking the ls is that we expect the features to be similar after the BN correction.
+- ans to [previous reunion](https://github.com/MarcoFurlan99/7_Wasserstein_computation_and_more) extra: bc parameters $\mu$ and $\text{Var}$ can be very different but ending results can be really good, as seen in the example with different brightnesses. The point of taking the latent spaces is that we expect the features to be similar after the BN correction.
 
 - Results change in a continuous way wrt to the parameters $\mu$ and $\sigma$, which means clipping was to blame likely for discontinuous behaviour and for the upper-triangle and lower-triangle patterns of the experiment in the [results of previous reunion](https://github.com/MarcoFurlan99/7_Wasserstein_computation_and_more).
 
 # The 1-90 experiment without skip-connections
 
-test test
+## parameters
+
+This is a subexperiment of the experiment above, in the sense that the set of parameters is a subset of the experiment above. I did it like this so that I can keep an eye if performance changes drastically after removing the skip-connections.
+
+The target datasets have the following parameters:
+
+- $\mu_1 \in \lbrace 64,96,128,160 \rbrace$
+
+- $\mu_2 \in \lbrace \mu_1 + d : d \in \lbrace 24,42,73,128\rbrace \land \mu_1+d \leq 192 \rbrace$
+
+- $\sigma_1 \in \lbrace 6,18,30 \rbrace$
+
+- $\sigma_2 \in \lbrace 6,18,30 \rbrace$
+
+This totals to 10 possible combinations of $(\mu_1, \mu_2)$ and 9 possible combinations of $(\sigma_1, \sigma_2)$, totalling 10x9 = 90 target datasets.
+
+The source dataset is chosen to have parameters $(96, 18, 138, 18)$.
+
+
+## How did I remove skip connections?
+
+
 
 # Ideas
 
