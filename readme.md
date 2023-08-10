@@ -24,6 +24,8 @@ You can play around with [this](https://www.desmos.com/calculator/ni6mms7ztn) to
 
 # The 1-800 experiment
 
+## parameters
+
 Since the code is already done and working, I went for a huge experiment with one source dataset and 800 target dataset. The objective of this is closing the experimentation with the four parameters $(\mu_1, \sigma_1, \mu_2, \sigma_2)$ with a single, complete experiment which encapsulates all possible cases.
 
 The target datasets have the following parameters:
@@ -43,6 +45,8 @@ The source dataset is chosen to have parameters $(96, 18, 138, 18)$.
 It is to be noted that these parameters are relatively much easier than previous experiments: $\min\limits_{\mu_1, \mu_2} (\mu_2 - \mu_1) = 24$ and $\max\limits_{\sigma \in \sigma_1 \cup \sigma_2} \sigma = 30$ [^1].
 
 [^1]: with abuse of notation on $\sigma_1$ and $\sigma_2$.
+
+## Results
 
 The usual graphs, before BN adaptation:
 
@@ -66,7 +70,34 @@ After BN adaptation:
 
 The difference graphs are in the folder [1_800](https://github.com/MarcoFurlan99/8_clip_correction_and_more/blob/master/1_800/).
 
+## Training history
+
+Unable to graph it because of the code crashing at every training but I checked by eye during training that it was going okay.
+
+## Wasserstein
+
+I used only the 0th latent space. Didn't get the 1st and 2nd for loss of hope on my part to find a meaningful pattern after seeing the Oth and the 3rd and 4th were shown to be too sparse to give reliable results with the Wasserstein in the [previous report](https://github.com/MarcoFurlan99/7_Wasserstein_computation_and_more).
+
+Nonetheless, there seems to be some sort of hyperbola-shaped pattern which I don't know how to interpret but is kinda cool to see.
+
+Raw Wasserstein:
+
+<img src="https://github.com/MarcoFurlan99/8_clip_correction_and_more/blob/master/1_800/Prometheus_0.png?raw=true">
+
+Target adapted Wasserstein (as in Luc's experiment in [your paper](https://publis.icube.unistra.fr/docs/17711/ISBI_paper_559.pdf)).
+
+<img src="https://github.com/MarcoFurlan99/8_clip_correction_and_more/blob/master/1_800/Prometheus_0.png?raw=true">
+
+## Observations
+
+- ans to [previous reunion](https://github.com/MarcoFurlan99/7_Wasserstein_computation_and_more) extra: bc parameters $\mu$ and $\Var$ can be very different but ending results can be really good, as seen in the example with different brightnesses. The point of taking the ls is that we expect the features to be similar after the BN correction.
+
+- Results change in a continuous way wrt to the parameters $\mu$ and $\sigma$, which means clipping was to blame likely for discontinuous behaviour and for the upper-triangle and lower-triangle patterns of the experiment in the [results of previous reunion](https://github.com/MarcoFurlan99/7_Wasserstein_computation_and_more).
 
 # The 1-90 experiment without skip-connections
 
 test test
+
+# Ideas
+
+- Maybe checking in the brightness shift case if I can find some meaningful correlation between the 
