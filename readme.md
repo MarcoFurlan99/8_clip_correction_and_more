@@ -76,7 +76,7 @@ Unable to graph it because of the code crashing at every training but I checked 
 
 ## Wasserstein
 
-I used only the 0th latent space. Didn't get the 1st and 2nd for loss of hope on my part to find a meaningful pattern after seeing the Oth and the 3rd and 4th were shown to be too sparse to give reliable results with the Wasserstein in the [previous report](https://github.com/MarcoFurlan99/7_Wasserstein_computation_and_more).
+I used only the 0th latent space. Didn't get the 1st and 2nd for loss of hope on my part to find a meaningful pattern after seeing the 0th and the 3rd and 4th were shown to be too sparse to give reliable results with the Wasserstein in the [previous report](https://github.com/MarcoFurlan99/7_Wasserstein_computation_and_more).
 
 Nonetheless, there seems to be some sort of hyperbola-shaped pattern which I don't know how to interpret but is kinda cool to see.
 
@@ -90,7 +90,7 @@ Target adapted Wasserstein (as in Luc's experiment in [your paper](https://publi
 
 ## Observations
 
-- ans to [previous reunion](https://github.com/MarcoFurlan99/7_Wasserstein_computation_and_more) extra: bc parameters $\mu$ and $\text{Var}$ can be very different but ending results can be really good, as seen in the example with different brightnesses. The point of taking the latent spaces is that we expect the features to be similar after the BN correction.
+- ans to [previous reunion](https://github.com/MarcoFurlan99/7_Wasserstein_computation_and_more) "extra": bc parameters $\mu$ and $\text{Var}$ can be very different but ending results can be really good, as seen in the example with different brightnesses. The point of taking the latent spaces is that we expect the features to be similar after the BN correction.
 
 - Results change in a continuous way wrt to the parameters $\mu$ and $\sigma$, which means clipping was to blame likely for discontinuous behaviour and for the upper-triangle and lower-triangle patterns of the experiment in the [results of previous reunion](https://github.com/MarcoFurlan99/7_Wasserstein_computation_and_more).
 
@@ -116,6 +116,23 @@ The source dataset is chosen to have parameters $(96, 18, 138, 18)$.
 
 
 ## How did I remove skip connections?
+
+
+<img src="https://github.com/MarcoFurlan99/8_clip_correction_and_more/blob/master/1_90/unet_without_skc.png?raw=true">
+
+I did the simplest thing possible code-wise and replaced the concatenation step :
+
+```
+x = torch.cat([x2, x1], dim=1)
+```
+
+With a concatenation with itself:
+
+```
+x = torch.cat([x1, x1], dim=1)
+```
+
+It's a very simple and unimpactful way to make this change. This of course causes some redundancy of information, but I'm convinced it doesn't change anything in the core working of the algorithm (wrt to if I remove the concatenation entirely). If this is not the case or you prefer that I remove the concatenation entirely you can let me know.
 
 
 
