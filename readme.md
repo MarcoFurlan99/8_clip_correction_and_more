@@ -204,4 +204,4 @@ No pattern at all.
 
 - Maybe checking in the brightness shift case as a very basic case and see if I can find some meaningful correlation there.
 
-- why are we interpreting latent spaces as a probability distributions w.r.t. the channels? It's literally matrices let's just use an L1 distance or any distance between matrices before getting too fancy with prob distributions
+- why are we interpreting latent spaces as probability distributions w.r.t. the channels? It's matrices let's just use a distance between matrices before getting fancy with probability distributions (what about a simple L1 distance, was it ever tried? It's literally the first thing that should be tried before doing anything else). If I can get a re-explanation of why probability distributions, other than using the Wasserstein in this, let me know.
