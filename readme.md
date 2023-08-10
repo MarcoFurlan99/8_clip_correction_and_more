@@ -169,7 +169,7 @@ The source dataset is chosen to have parameters $(96, 18, 138, 18)$.
 
 ## Training history
 
-Very unstable for some reason, the model saved is the one with the best preformance before early stopping kicks in.
+Very unstable from a point onwards. The model saved is the one with the best preformance before early stopping kicks in, so this is not really an issue performance-wise.
 
 <img src="https://github.com/MarcoFurlan99/8_clip_correction_and_more/blob/master/1_90/training_history.png?raw=true">
 
