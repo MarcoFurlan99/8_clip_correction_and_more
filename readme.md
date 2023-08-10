@@ -46,6 +46,10 @@ It is to be noted that these parameters are relatively much easier than previous
 
 [^1]: with abuse of notation on $\sigma_1$ and $\sigma_2$.
 
+## Training history
+
+Unable to graph it because of the code crashing at every training but I checked by eye that it had the classic downward trend (no irregularities in the training).
+
 ## Results
 
 The usual graphs, before BN adaptation:
@@ -69,10 +73,6 @@ After BN adaptation:
 <img src="https://github.com/MarcoFurlan99/8_clip_correction_and_more/blob/master/1_800/graph_2d_adapted_sigma.png?raw=true">
 
 The difference graphs are in the folder [1_800](https://github.com/MarcoFurlan99/8_clip_correction_and_more/blob/master/1_800/).
-
-## Training history
-
-Unable to graph it because of the code crashing at every training but I checked by eye that it had the classic downward trend (no irregularities in the training).
 
 ## Wasserstein
 
@@ -144,7 +144,7 @@ With a concatenation with itself:
 x = torch.cat([x1, x1], dim=1)
 ```
 
-It's a very simple and unimpactful way to make this change. This of course causes some redundancy of information, but I'm convinced it doesn't change anything in the core working of the algorithm (w.r.t. to if I remove the concatenation entirely). If this is not the case or you prefer that I remove the concatenation entirely you can let me know.
+It's a very simple and unimpactful way to make this change. This of course causes some redundancy of information, but I'm convinced it doesn't change anything in the core working of the algorithm (w.r.t. to if I removed the concatenation entirely). If you prefer that I remove the concatenation entirely you can let me know.
 
 
 ## parameters
@@ -165,6 +165,12 @@ This totals to 10 possible combinations of $(\mu_1, \mu_2)$ and 9 possible combi
 
 The source dataset is chosen to have parameters $(96, 18, 138, 18)$.
 
+## Training history
+
+Very unstable for some reason, the model saved is the one with the best preformance before early stopping kicks in.
+
+<img src="https://github.com/MarcoFurlan99/8_clip_correction_and_more/blob/master/1_90/training_history.png?raw=true">
+
 ## Results
 
 Without BN adaptation:
@@ -175,12 +181,25 @@ With BN adaptation:
 
 <img src="https://github.com/MarcoFurlan99/8_clip_correction_and_more/blob/master/1_90/graph_2d_adapted.png?raw=true">
 
-## Training history
+## Wasserstein
 
-Very unstable for some reason
+The hope was that removing the skip-connections would assist the similarity between the latent spaces. This unfortunately was not the case. Plotting:
 
-<img src="https://github.com/MarcoFurlan99/8_clip_correction_and_more/blob/master/1_90/training_history.png?raw=true">
+**Target-normalized Wasserstein - 0th ls**
+
+<img src="https://github.com/MarcoFurlan99/8_clip_correction_and_more/blob/master/1_90/Prometheus_0.png?raw=true">
+
+
+**Target-normalized Wasserstein - 4th ls**
+
+<img src="https://github.com/MarcoFurlan99/8_clip_correction_and_more/blob/master/1_90/Prometheus_4.png?raw=true">
+
+No pattern at all.
 
 # Ideas
 
-- Maybe checking in the brightness shift case if I can find some meaningful correlation between the 
+- The U-Net is essentially a massive monster of parameters and changing the input likely changes all latent spaces in a non trivial way. I seriously doubt there is any relationship to be found there, it's too much of a mess between the input image and the latent spaces. It's been a couple months since I've had this feeling and now with the results in hand confirming it I'm quite demotivated, if there is anything else I should know about why this may work now it would be a good time to know it.
+
+- Maybe checking in the brightness shift case as a very basic case and see if I can find some meaningful correlation there.
+
+- why are we interpreting latent spaces as a probability distributions w.r.t. the channels? It's literally matrices let's just use an L1 distance or any distance between matrices before getting too fancy with prob distributions
