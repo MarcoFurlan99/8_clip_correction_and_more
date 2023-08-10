@@ -94,11 +94,15 @@ Target adapted Wasserstein (as in Luc's experiment in [your paper](https://publi
 
 - Results change in a continuous way wrt to the parameters $\mu$ and $\sigma$, which means clipping was to blame likely for discontinuous behaviour and for the upper-triangle and lower-triangle patterns of the experiment in the [results of previous reunion](https://github.com/MarcoFurlan99/7_Wasserstein_computation_and_more).
 
-## extra: trying to predict performance based off original parameters
+## extra: trying to predict performance with the original parameters
 
 An accurate prediction of IoU_adapted with the original parameters $(\mu_1, \sigma_1, \mu_2, \sigma_2)$ would be a good base level for our prediction. I already tried this and failed but the regularity that arised from preventing the clipping gave me better hope.
 
-I tried computing different distance measures between the two target distributions $N(\mu_1, \sigma_1)$ and $N(\mu_2, \sigma_2)$, here are the results:
+Let us call $N(\mu_{1s}, \sigma_{1s})$ and $N(\mu_{2s}, \sigma_{2s})$ the parameters of background and mask on the source dataset, and simiarly for the target dataset $N(\mu_{1t}, \sigma_{1t})$ and $N(\mu_{2t}, \sigma_{2t})$.
+
+I tried computing different distance measures between the two target distributions $N(\mu_{1t}, \sigma_{1t})$ and $N(\mu_{2t}, \sigma_{2t})$, essentially ignoring the source parameters because the source is the same for all target dataset [^2], here are the results:
+
+[^2] ofc there should be a way to use it! But anyways this entire subsection is not really the point of my internship it's more of a sidenote.
 
 **coefficient of overlapping**
 
@@ -115,6 +119,8 @@ I tried computing different distance measures between the two target distributio
 **log_Wasserstein_targetnorm**
 
 <img src="https://github.com/MarcoFurlan99/8_clip_correction_and_more/blob/master/1_800/distance_graphs/log_Wasserstein_targetnorm.png?raw=true">
+
+So there are definitely patterns arising but nothing too clear. If someone has ideas on how to include the source parameters as well it may be an interesting extra result to include.
 
 # The 1-90 experiment without skip-connections
 
