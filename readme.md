@@ -66,3 +66,7 @@ After BN adaptation:
 
 The difference graphs are in the folder [1_800](https://github.com/MarcoFurlan99/8_clip_correction_and_more/blob/master/1_800/).
 
+
+# The 1-90 experiment without skip-connections
+
+test test
