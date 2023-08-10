@@ -126,7 +126,7 @@ I tried computing different distance measures between the two target distributio
 
 <img src="https://github.com/MarcoFurlan99/8_clip_correction_and_more/blob/master/1_800/distance_graphs/log_Wasserstein_targetnorm.png?raw=true">
 
-So there are definitely patterns arising but also a good amount of outliars. If someone has ideas on how to include the source parameters as well it may be an interesting extra result to include.
+So there are definitely patterns arising but also a good amount of outliers. If someone has ideas on how to include the source parameters as well it may be an interesting extra result to include.
 
 # The 1-90 experiment without skip-connections
 
