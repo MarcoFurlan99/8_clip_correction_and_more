@@ -58,7 +58,7 @@ After BN adaptation:
 
 Results without clipping are homogeneous, as S. expected !
 
-New graphs: these are the same values but I graph them wrt $\mu_1, \mu_2$ externally and $\sigma_1, \sigma_2$ internally.
+The following are *new graphs*: they have the same values as above but arranged differently, w.r.t. $\mu_1, \mu_2$ externally and $\sigma_1, \sigma_2$ internally.
 
 before BN adaptation:
 
@@ -72,37 +72,41 @@ The difference graphs are in the folder [1_800](https://github.com/MarcoFurlan99
 
 ## Training history
 
-Unable to graph it because of the code crashing at every training but I checked by eye during training that it had the classic downward trend (no irregularities in the training).
+Unable to graph it because of the code crashing at every training but I checked by eye that it had the classic downward trend (no irregularities in the training).
 
 ## Wasserstein
 
-I used only the 0th latent space. Didn't get the 1st and 2nd for loss of hope on my part to find a meaningful pattern after seeing the 0th and the 3rd and 4th were shown to be too sparse to give reliable results with the Wasserstein in the [previous report](https://github.com/MarcoFurlan99/7_Wasserstein_computation_and_more).
+I plotted only the 0th latent space. Didn't get the 1st and 2nd latent spaces for loss of hope on my part to find a meaningful pattern after seeing the 0th; the 3rd and 4th were shown to be too sparse to give reliable results with the Wasserstein in the [previous report](https://github.com/MarcoFurlan99/7_Wasserstein_computation_and_more).
 
 Nonetheless, there seems to be some sort of hyperbola-shaped pattern which I don't know how to interpret but is kinda cool to see.
 
-Raw Wasserstein:
+**Raw Wasserstein**
 
 <img src="https://github.com/MarcoFurlan99/8_clip_correction_and_more/blob/master/1_800/Prometheus_0.png?raw=true">
 
-Target adapted Wasserstein (as in Luc's experiment in [your paper](https://publis.icube.unistra.fr/docs/17711/ISBI_paper_559.pdf)).
+**Target adapted Wasserstein** (as in Luc's experiment in [your paper](https://publis.icube.unistra.fr/docs/17711/ISBI_paper_559.pdf)).
 
 <img src="https://github.com/MarcoFurlan99/8_clip_correction_and_more/blob/master/1_800/Prometheus_TA_0.png?raw=true">
 
 ## Observations
 
-- ans to [previous reunion](https://github.com/MarcoFurlan99/7_Wasserstein_computation_and_more) "extra": bc parameters $\mu$ and $\text{Var}$ can be very different but ending results can be really good, as seen in the example with different brightnesses. The point of taking the latent spaces is that we expect the features to be similar after the BN correction.
+- answer to [previous reunion](https://github.com/MarcoFurlan99/7_Wasserstein_computation_and_more) "extra": bc parameters $\mu$ and $\text{Var}$ can be very different but ending results can be really good, as seen in the example with different brightnesses. The point of taking the latent spaces is that we expect the features to be similar after the BN correction.
 
-- Results change in a continuous way wrt to the parameters $\mu$ and $\sigma$, which means clipping was to blame likely for discontinuous behaviour and for the upper-triangle and lower-triangle patterns of the experiment in the [results of previous reunion](https://github.com/MarcoFurlan99/7_Wasserstein_computation_and_more).
+- Results change in a continuous way w.r.t. to the parameters $\mu$ and $\sigma$, which means clipping was to blame likely for discontinuous behaviour and for the upper-triangle and lower-triangle patterns of the experiment in the [results of previous reunion](https://github.com/MarcoFurlan99/7_Wasserstein_computation_and_more).
+
+- I can't really conclude anything meaningful on the Wasserstein.
 
 ## extra: trying to predict performance with the original parameters
 
-An accurate prediction of IoU_adapted with the original parameters $(\mu_1, \sigma_1, \mu_2, \sigma_2)$ would be a good base level for our prediction. I already tried this and failed but the regularity that arised from preventing the clipping gave me better hope.
+An accurate prediction of IoU_adapted with the original parameters $(\mu_1, \sigma_1, \mu_2, \sigma_2)$ would be a good starting point (essentially in my opinion if we can't do this there's really no need to try to do all the messy process to get the latent spaces ecc ecc).
+
+It's something I've been trying to do since forever and failed but in this experiment the regularity that arised from preventing the clipping gave me better hope.
 
 Let us call $N(\mu_{1s}, \sigma_{1s})$ and $N(\mu_{2s}, \sigma_{2s})$ the parameters of background and mask on the source dataset, and simiarly for the target dataset $N(\mu_{1t}, \sigma_{1t})$ and $N(\mu_{2t}, \sigma_{2t})$.
 
-I tried computing different distance measures between the two target distributions $N(\mu_{1t}, \sigma_{1t})$ and $N(\mu_{2t}, \sigma_{2t})$, essentially ignoring the source parameters because the source is the same for all target dataset [^2], here are the results:
+I tried computing different distance measures between the two target distributions $N(\mu_{1t}, \sigma_{1t})$ and $N(\mu_{2t}, \sigma_{2t})$, essentially ignoring the source parameters because the source is the same for all target dataset [^1], here are the results:
 
-[^2] ofc there should be a way to use it! But anyways this entire subsection is not really the point of my internship it's more of a sidenote.
+[^1] ofc there should be a way to use it! But anyways this entire subsection is not really the point of my internship it's more of a sidenote.
 
 **coefficient of overlapping**
 
@@ -160,7 +164,7 @@ With a concatenation with itself:
 x = torch.cat([x1, x1], dim=1)
 ```
 
-It's a very simple and unimpactful way to make this change. This of course causes some redundancy of information, but I'm convinced it doesn't change anything in the core working of the algorithm (wrt to if I remove the concatenation entirely). If this is not the case or you prefer that I remove the concatenation entirely you can let me know.
+It's a very simple and unimpactful way to make this change. This of course causes some redundancy of information, but I'm convinced it doesn't change anything in the core working of the algorithm (w.r.t. to if I remove the concatenation entirely). If this is not the case or you prefer that I remove the concatenation entirely you can let me know.
 
 ## Results
 
