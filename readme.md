@@ -72,7 +72,7 @@ The difference graphs are in the folder [1_800](https://github.com/MarcoFurlan99
 
 ## Training history
 
-Unable to graph it because of the code crashing at every training but I checked by eye during training that it was going okay.
+Unable to graph it because of the code crashing at every training but I checked by eye during training that it had the classic downward trend (no irregularities in the training).
 
 ## Wasserstein
 
