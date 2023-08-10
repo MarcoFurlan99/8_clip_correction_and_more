@@ -98,11 +98,11 @@ Nonetheless, there seems to be some sort of hyperbola-shaped pattern which I don
 
 ## extra: trying to predict performance with the original parameters
 
-An accurate prediction of IoU_adapted with the original parameters $(\mu_1, \sigma_1, \mu_2, \sigma_2)$ would be a good starting point (essentially in my opinion if we can't do this there's really no need to try to do all the messy process to get the latent spaces ecc ecc).
+An accurate prediction of IoU_adapted with the original parameters $(\mu_1, \sigma_1, \mu_2, \sigma_2)$ would be a good starting point (essentially in my opinion if we can't do this there's really no need to try to do all the messy process to get the latent spaces and interpret them as multidimensional distributions and finding a distance between the two ecc ecc).
 
 It's something I've been trying to do since forever and failed but in this experiment the regularity that arised from preventing the clipping gave me better hope.
 
-Let us call $N(\mu_{1s}, \sigma_{1s})$ and $N(\mu_{2s}, \sigma_{2s})$ the parameters of background and mask on the source dataset, and simiarly for the target dataset $N(\mu_{1t}, \sigma_{1t})$ and $N(\mu_{2t}, \sigma_{2t})$.
+Let us call $N(\mu_{1s}, \sigma_{1s})$ and $N(\mu_{2s}, \sigma_{2s})$ the distributions of background and mask on the source dataset, and similarly for the target dataset $N(\mu_{1t}, \sigma_{1t})$ and $N(\mu_{2t}, \sigma_{2t})$.
 
 I tried computing different distance measures between the two target distributions $N(\mu_{1t}, \sigma_{1t})$ and $N(\mu_{2t}, \sigma_{2t})$, essentially ignoring the source parameters because the source is the same for all target dataset [^2], here are the results:
 
@@ -128,6 +128,25 @@ So there are definitely patterns arising but nothing too clear. If someone has i
 
 # The 1-90 experiment without skip-connections
 
+## How did I remove skip connections?
+
+<img src="https://github.com/MarcoFurlan99/8_clip_correction_and_more/blob/master/1_90/unet_without_skc.png?raw=true">
+
+I did the simplest thing possible code-wise and replaced the concatenation step :
+
+```
+x = torch.cat([x2, x1], dim=1)
+```
+
+With a concatenation with itself:
+
+```
+x = torch.cat([x1, x1], dim=1)
+```
+
+It's a very simple and unimpactful way to make this change. This of course causes some redundancy of information, but I'm convinced it doesn't change anything in the core working of the algorithm (w.r.t. to if I remove the concatenation entirely). If this is not the case or you prefer that I remove the concatenation entirely you can let me know.
+
+
 ## parameters
 
 This is a subexperiment of the experiment above, in the sense that the set of parameters is a subset of the set of parameters of the experiment above. I did it like this so that I can keep an eye if performance changes drastically after removing the skip-connections.
@@ -145,26 +164,6 @@ The target datasets have the following parameters:
 This totals to 10 possible combinations of $(\mu_1, \mu_2)$ and 9 possible combinations of $(\sigma_1, \sigma_2)$, totalling 10x9 = 90 target datasets.
 
 The source dataset is chosen to have parameters $(96, 18, 138, 18)$.
-
-
-## How did I remove skip connections?
-
-
-<img src="https://github.com/MarcoFurlan99/8_clip_correction_and_more/blob/master/1_90/unet_without_skc.png?raw=true">
-
-I did the simplest thing possible code-wise and replaced the concatenation step :
-
-```
-x = torch.cat([x2, x1], dim=1)
-```
-
-With a concatenation with itself:
-
-```
-x = torch.cat([x1, x1], dim=1)
-```
-
-It's a very simple and unimpactful way to make this change. This of course causes some redundancy of information, but I'm convinced it doesn't change anything in the core working of the algorithm (w.r.t. to if I remove the concatenation entirely). If this is not the case or you prefer that I remove the concatenation entirely you can let me know.
 
 ## Results
 
