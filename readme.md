@@ -104,9 +104,9 @@ It's something I've been trying to do since forever and failed but in this exper
 
 Let us call $N(\mu_{1s}, \sigma_{1s})$ and $N(\mu_{2s}, \sigma_{2s})$ the parameters of background and mask on the source dataset, and simiarly for the target dataset $N(\mu_{1t}, \sigma_{1t})$ and $N(\mu_{2t}, \sigma_{2t})$.
 
-I tried computing different distance measures between the two target distributions $N(\mu_{1t}, \sigma_{1t})$ and $N(\mu_{2t}, \sigma_{2t})$, essentially ignoring the source parameters because the source is the same for all target dataset [^1], here are the results:
+I tried computing different distance measures between the two target distributions $N(\mu_{1t}, \sigma_{1t})$ and $N(\mu_{2t}, \sigma_{2t})$, essentially ignoring the source parameters because the source is the same for all target dataset [^2], here are the results:
 
-[^1] ofc there should be a way to use it! But anyways this entire subsection is not really the point of my internship it's more of a sidenote.
+[^2]: ofc there should be a way to use it! But anyways this entire subsection is not really the point of my internship it's more of a sidenote.
 
 **coefficient of overlapping**
 
